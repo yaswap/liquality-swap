@@ -160,7 +160,8 @@ Time ref: ${expiration.unix()}`
 
   await withLoadingMessage('a', dispatch, getState, async () => {
     const secret = await client.swap.generateSecret(secretMsg)
-    dispatch(secretActions.setSecret(secret))
+    console.log("TACA ===> app-links.js, generateSecret, secret = ", secret)
+    dispatch(secretActions.setSecret(secret)) // THIS WILL SET SECRETHASH AS WELL
   })
 }
 
@@ -174,6 +175,7 @@ async function initiateSwap (dispatch, getState) {
     isPartyB
   } = getState().swap
 
+  console.log("TACA ===> swap.js, initiateSwap, getState().swap = ", getState().swap)
   if (transactions.a.initiation.hash) return
 
   const { wallets: canonicalWallets, counterParty: canonicalCounterParty } = canonicalAppState.swap || getState().swap
@@ -194,10 +196,12 @@ async function initiateSwap (dispatch, getState) {
   if (config.debug) { // TODO: enable debugging universally on all CAL functions (chainClient.js)
     console.log('Initiating Swap', swapParams)
   }
+  console.log("TACA ===> swap.js, initiateSwap, swapParams = ", swapParams)
   const initiationTx = await client.swap.initiateSwap(swapParams, fees[config.defaultFee].fee)
   if (wallets.a.type === 'metamask') { // TODO: fix properly
     alert('Please do not use the "Speed up" function to bump the priority of the transaction as this is not yet supported.')
   }
+  console.log("TACA ===> swap.js, initiateSwap, calling setTransaction a")
   dispatch(transactionActions.setTransaction('a', 'initiation', { hash: initiationTx.hash }))
   dispatch(transactionActions.setStartBlock('a', blockNumber))
 }
@@ -211,12 +215,16 @@ async function fundSwap (dispatch, getState) {
     expiration,
     isPartyB
   } = getState().swap
+  console.log("TACA ===> swap.js, fundSwap, getState().swap = ", getState().swap)
   const { wallets: canonicalWallets, counterParty: canonicalCounterParty } = canonicalAppState.swap || getState().swap
   const client = getClient(assets.a.currency, wallets.a.type)
 
   // Only ERC20 swaps need fund step
   const isERC20 = config.assets[assets.a.currency].type === 'erc20'
-  if (!isERC20) return
+  if (!isERC20) {
+    console.log("TACA ===> swap.js, fundSwap, not isERC20, return")
+    return
+  }
 
   let initiationTransactionReceipt = null
   while (initiationTransactionReceipt === null) {
@@ -248,11 +256,14 @@ async function fundSwap (dispatch, getState) {
   if (config.debug) { // TODO: enable debugging universally on all CAL functions (chainClient.js)
     console.log('Funding Swap', fundSwapParams)
   }
+  console.log("TACA ===> swap.js, fundSwap, fundSwapParams = ", fundSwapParams)
+
   const fundTx = await client.swap.fundSwap(...fundSwapParams)
   if (fundTx) {
     if (wallets.a.type === 'metamask') { // TODO: fix properly
       alert('Please do not use the "Speed up" function to bump the priority of the transaction as this is not yet supported.')
     }
+    console.log("TACA ===> swap.js, fundSwap, calling setTransaction a")
     dispatch(transactionActions.setTransaction('a', 'fund', { hash: fundTx.hash }))
   }
 }
@@ -326,8 +337,11 @@ function createExpiration (dispatch, getState) {
     expiration
   } = getState().swap
   // Do not regenerate expiration if initiation has happened
+  console.log("TACA ===> swap.js, createExpiration, expiration = ", expiration)
+  console.log("TACA ===> swap.js, createExpiration, transactions.a.initiation.hash = ", transactions.a.initiation.hash)
   if (expiration && transactions.a.initiation.hash) return
   const generatedExpiration = quote ? quote.swapExpiration : generateExpiration()
+  console.log("TACA ===> swap.js, createExpiration, generatedExpiration = ", generatedExpiration)
   dispatch(setExpiration(generatedExpiration))
 }
 
@@ -335,17 +349,25 @@ function createSwap () {
   return async (dispatch, getState) => {
     dispatch(showErrors())
     const quote = getState().swap.agent.quote
+    console.log("TACA ===> swap.js, createSwap, quote = ", quote)
     createExpiration(dispatch, getState)
     const initiateValid = isInitiateValid(getState().swap)
     if (!initiateValid) return
+    console.log("TACA ===> swap.js, createSwap, calling withLockedQuote")
     await withLockedQuote(dispatch, getState, async () => {
+      console.log("TACA ===> swap.js, createSwap, calling setInitiationWalletPopups")
       await setInitiationWalletPopups(false, dispatch, getState)
+      console.log("TACA ===> swap.js, createSwap, calling withWalletPopupStep SIGN")
       await withWalletPopupStep(WALLET_ACTION_STEPS.SIGN, dispatch, getState, async () => {
+        console.log("TACA ===> swap.js, createSwap, calling generateSecret")
         await generateSecret(dispatch, getState)
       })
+      console.log("TACA ===> swap.js, createSwap, calling withWalletPopupStep CONFIRM")
       await withWalletPopupStep(WALLET_ACTION_STEPS.CONFIRM, dispatch, getState, async () => {
         await withLoadingMessage('a', dispatch, getState, async () => {
+          console.log("TACA ===> swap.js, createSwap, calling initiateSwap")
           await initiateSwap(dispatch, getState)
+          console.log("TACA ===> swap.js, createSwap, calling fundSwap")
           await fundSwap(dispatch, getState)
         })
       })
@@ -354,8 +376,11 @@ function createSwap () {
         await submitOrder(quote, dispatch, getState)
       }
     })
+    console.log("TACA ===> swap.js, createSwap, calling syncActions.sync(a)")
     dispatch(syncActions.sync('a'))
+    console.log("TACA ===> swap.js, createSwap, calling syncActions.sync(b)")
     dispatch(syncActions.sync('b'))
+    console.log("TACA ===> swap.js, createSwap, calling replace(/backupLink)")
     dispatch(replace('/backupLink'))
   }
 }
@@ -373,6 +398,7 @@ function confirmSwap () {
         await fundSwap(dispatch, getState)
       })
     })
+    console.log("TACA ===> swap.js, confirmSwap, calling replace(/backupLink)")
     dispatch(replace('/backupLink'))
   }
 }
@@ -409,6 +435,7 @@ async function claimSwap (dispatch, getState) {
     console.log('Claiming Swap', claimSwapParams)
   }
   const claimTx = await client.swap.claimSwap(...claimSwapParams)
+  console.log("TACA ===> swap.js, claimSwap, calling setTransaction a")
   dispatch(transactionActions.setTransaction('a', 'claim', { hash: claimTx.hash, blockNumber }))
 }
 
@@ -469,6 +496,7 @@ function refundSwap () {
     await withWalletPopupStep(WALLET_ACTION_STEPS.CONFIRM, dispatch, getState, async () => {
       await withLoadingMessage('a', dispatch, getState, async () => {
         const refundTx = await client.swap.refundSwap(...refundSwapParams)
+        console.log("TACA ===> swap.js, refundSwap, calling setTransaction a")
         dispatch(transactionActions.setTransaction('a', 'refund', { hash: refundTx.hash, blockNumber }))
       })
     })

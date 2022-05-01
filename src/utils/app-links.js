@@ -49,10 +49,15 @@ function generateLink (swap, counterparty = false) {
 }
 
 function generateSwapState (location) {
-  if (!location.hash || !location.hash.includes('ccy1')) return undefined // no state
+  console.log("TACA ===> app-links.js, generateSwapState BEGIN")
+  if (!location.hash || !location.hash.includes('ccy1'))
+  {
+    console.log("TACA ===> app-links.js, generateSwapState, return undefined")
+    return undefined // no state
+  }
   const urlParams = queryString.parse(location.hash.replace('#', ''))
 
-  return {
+  const swapState = {
     assets: {
       a: { currency: urlParams.ccy1, value: BigNumber(urlParams.ccy1v) },
       b: { currency: urlParams.ccy2, value: BigNumber(urlParams.ccy2v) },
@@ -78,6 +83,8 @@ function generateSwapState (location) {
     isPartyB: urlParams.isPartyB === 'true',
     link: location.href
   }
+  console.log("TACA ===> app-links.js, generateSwapState, swapState = ", swapState)
+  return swapState
 }
 
 export { APP_BASE_URL, generateLink, generateSwapState }

@@ -25,10 +25,12 @@ window.addEventListener('error', errorHandler)
 window.addEventListener('unhandledrejection', e => errorHandler(e.reason))
 
 if (initialAppState.swap) {
+  console.log("TACA ===> App.js, calling setTransaction a")
   store.dispatch(transactionActions.setTransaction(
     'a', 'initiation', initialAppState.swap.transactions.a.initiation
   ))
   if (initialAppState.swap.transactions.b.initiation) {
+    console.log("TACA ===> App.js, calling setTransaction b")
     store.dispatch(transactionActions.setTransaction(
       'b', 'initiation', initialAppState.swap.transactions.b.initiation
     ))
@@ -37,7 +39,9 @@ if (initialAppState.swap) {
     // Need to use action to kick off tx monitoring
     store.dispatch(assetActions.changeAmount('b', initialAppState.swap.assets.b.value)) // Trigger rate calc
   }
+  console.log("TACA ===> App.js, calling syncActions.sync('a')")
   store.dispatch(syncActions.sync('a'))
+  console.log("TACA ===> App.js, calling syncActions.sync('b')")
   store.dispatch(syncActions.sync('b'))
 } else {
   if (config.agents && config.agents.length) {
