@@ -1,8 +1,8 @@
 import moment from 'moment'
 
 const expirationDurations = {
-  a: moment.duration(6, 'h'),
-  b: moment.duration(3, 'h')
+  a: moment.duration(30, 'm'),
+  b: moment.duration(15, 'm')
 }
 
 function getExpirationForParty (expiration, party, isPartyB) {
