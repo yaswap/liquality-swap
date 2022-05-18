@@ -38,6 +38,14 @@ export default {
       network: 'bitcoin_testnet',
       explorerPath: 'https://blockstream.info/testnet/tx/'
     },
+    YAC: {
+      api: {
+        url: 'http://73.43.56.247:3001/api'
+      },
+      feeNumberOfBlocks: 1,
+      network: 'yacoin_testnet',
+      explorerPath: 'http://73.43.56.247:3001/tx/'
+    },
     RBTC: {
       rpc: {
         url: 'https://public-node.testnet.rsk.co'
