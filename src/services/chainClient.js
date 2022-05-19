@@ -24,6 +24,13 @@ import { EthereumWalletApiProvider } from '@liquality/ethereum-wallet-api-provid
 import { EthereumRpcFeeProvider } from '@liquality/ethereum-rpc-fee-provider'
 import { EthereumGasNowFeeProvider } from '@liquality/ethereum-gas-now-fee-provider'
 
+import { YacoinEsploraApiProvider } from '@liquality/yacoin-esplora-api-provider'
+import { YacoinEsploraSwapFindProvider } from '@liquality/yacoin-esplora-swap-find-provider'
+import { YacoinWalletApiProvider } from '@liquality/yacoin-wallet-api-provider'
+import { YacoinSwapProvider } from '@liquality/yacoin-swap-provider'
+import { YacoinFeeApiProvider } from '@liquality/yacoin-fee-api-provider'
+import { YacoinNetworks } from '@liquality/yacoin-networks'
+
 import LedgerTransportWebUSB from '@ledgerhq/hw-transport-webusb'
 
 import config from '../config'
@@ -83,6 +90,47 @@ function createBtcClient (asset, wallet) {
   return btcClient
 }
 
+function createYacClient(asset, wallet) {
+  const yacConfig = config.assets.YAC;
+  const network = YacoinNetworks[yacConfig.network];
+
+  const yacClient = new Client();
+  if (wallet === "liquality") {
+    yacClient.addProvider(
+      new YacoinEsploraApiProvider({
+        url: yacConfig.api.url,
+        network: YacoinNetworks[yacConfig.network],
+        numberOfBlockConfirmation: yacConfig.feeNumberOfBlocks,
+      })
+    );
+    yacClient.addProvider(
+      new YacoinWalletApiProvider({ network, addressType: "legacy" })
+    );
+  } else {
+    // Verify functions required when wallet not connected
+    yacClient.addProvider(
+      new YacoinEsploraApiProvider({
+        url: yacConfig.api.url,
+        network: YacoinNetworks[yacConfig.network],
+        numberOfBlockConfirmation: yacConfig.feeNumberOfBlocks,
+      })
+    );
+  }
+  yacClient.addProvider(
+    new YacoinSwapProvider({ network, mode: yacConfig.swapMode })
+  );
+  if (yacConfig.api)
+    yacClient.addProvider(new YacoinEsploraSwapFindProvider(yacConfig.api.url));
+
+  yacClient.addProvider(
+    new YacoinFeeApiProvider(
+      "https://liquality.io/swap/mempool/v1/fees/recommended"
+    )
+  );
+
+  return yacClient;
+}
+
 function createEthClient (asset, wallet) {
   const assetConfig = config.assets[asset]
   const network = EthereumNetworks[assetConfig.network]
@@ -126,7 +174,8 @@ const clientCreators = {
   ETH: createEthClient,
   RBTC: createEthClient,
   erc20: createEthClient,
-  MATIC: createEthClient
+  MATIC: createEthClient,
+  YAC: createYacClient
 }
 
 const clients = {}

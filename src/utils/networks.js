@@ -1,5 +1,6 @@
 import { BitcoinNetworks } from '@liquality/bitcoin-networks'
 import { EthereumNetworks } from '@liquality/ethereum-networks'
+import { YacoinNetworks } from '@liquality/yacoin-networks'
 import config from '../config'
 import moment from 'moment'
 
@@ -8,7 +9,8 @@ const networksMap = {
   ETH: EthereumNetworks,
   RBTC: EthereumNetworks,
   erc20: EthereumNetworks,
-  MATIC: EthereumNetworks
+  MATIC: EthereumNetworks,
+  YAC: YacoinNetworks
 }
 
 function getNetworkByCurrency (asset) {
@@ -32,6 +34,8 @@ function getConfirmationEstimate (asset) {
     return moment.duration(1, 'minutes')
   } else if (asset === 'BTC') {
     return moment.duration(10, 'minutes')
+  } else if (asset === 'YAC') {
+    return moment.duration(60, 'minutes')
   } else {
     throw new Error('UNSUPPORTED NETWORK FOR ESTIMATION')
   }

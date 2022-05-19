@@ -88,10 +88,16 @@ function getAvailableBitcoinWallets () {
   return wallets
 }
 
+function getAvailableYacoinWallets () {
+  const wallets = ['liquality']
+  return wallets
+}
+
 const walletsByAsset = {
   ETH: getAvailableEthereumWallets('ETH'),
   RBTC: getAvailableEthereumWallets('RBTC'),
-  BTC: getAvailableBitcoinWallets()
+  BTC: getAvailableBitcoinWallets(),
+  YAC: getAvailableYacoinWallets()
 }
 
 function getAssetWallets (asset) {

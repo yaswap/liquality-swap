@@ -102,7 +102,8 @@ const initiatePopups = {
     BTC: defaultPopup,
     ETH: defaultPopup,
     RBTC: defaultPopup,
-    erc20: defaultERC20Popup
+    erc20: defaultERC20Popup,
+    YAC: defaultPopup
   }
 }
 
@@ -122,7 +123,8 @@ const claimPopups = {
     BTC: toClaimPopup(defaultPopup),
     ETH: toEthereumClaimPopup(defaultPopup),
     RBTC: toEthereumClaimPopup(defaultPopup),
-    erc20: toEthereumClaimPopup(defaultERC20Popup)
+    erc20: toEthereumClaimPopup(defaultERC20Popup),
+    YAC: toClaimPopup(defaultPopup)
   }
 }
 
@@ -142,7 +144,8 @@ const refundPopups = {
     BTC: toRefundPopup(defaultPopup),
     ETH: toRefundPopup(defaultPopup),
     RBTC: toRefundPopup(defaultPopup),
-    erc20: toRefundPopup(defaultERC20Popup)
+    erc20: toRefundPopup(defaultERC20Popup),
+    YAC: toRefundPopup(defaultPopup)
   }
 }
 
