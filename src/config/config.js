@@ -40,7 +40,8 @@ export default {
     },
     YAC: {
       api: {
-        url: 'http://73.43.56.247:3001/api'
+        esploraUrl: 'http://73.43.56.247:3001/api',
+        esploraSwapUrl: 'http://73.43.56.247:3001'
       },
       feeNumberOfBlocks: 1,
       network: 'yacoin_testnet',

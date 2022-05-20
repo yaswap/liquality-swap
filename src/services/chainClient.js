@@ -93,24 +93,28 @@ function createBtcClient (asset, wallet) {
 function createYacClient(asset, wallet) {
   const yacConfig = config.assets.YAC;
   const network = YacoinNetworks[yacConfig.network];
+  console.log("TACA ===> createYacClient, network = ", network)
 
   const yacClient = new Client();
   if (wallet === "liquality") {
     yacClient.addProvider(
       new YacoinEsploraApiProvider({
-        url: yacConfig.api.url,
+        url: yacConfig.api.esploraUrl,
         network: YacoinNetworks[yacConfig.network],
         numberOfBlockConfirmation: yacConfig.feeNumberOfBlocks,
       })
     );
     yacClient.addProvider(
-      new YacoinWalletApiProvider({ network, addressType: "legacy" })
+      new YacoinWalletApiProvider({
+        network: YacoinNetworks[yacConfig.network],
+        addressType: "legacy",
+      })
     );
   } else {
     // Verify functions required when wallet not connected
     yacClient.addProvider(
       new YacoinEsploraApiProvider({
-        url: yacConfig.api.url,
+        url: yacConfig.api.esploraUrl,
         network: YacoinNetworks[yacConfig.network],
         numberOfBlockConfirmation: yacConfig.feeNumberOfBlocks,
       })
@@ -120,7 +124,7 @@ function createYacClient(asset, wallet) {
     new YacoinSwapProvider({ network, mode: yacConfig.swapMode })
   );
   if (yacConfig.api)
-    yacClient.addProvider(new YacoinEsploraSwapFindProvider(yacConfig.api.url));
+    yacClient.addProvider(new YacoinEsploraSwapFindProvider(yacConfig.api.esploraSwapUrl));
 
   yacClient.addProvider(
     new YacoinFeeApiProvider(
