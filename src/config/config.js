@@ -58,7 +58,7 @@ export default {
       network: 'rsk_testnet',
       explorerPath: 'https://explorer.testnet.rsk.co/tx/0x'
     },
-    DAI: {
+    FAU: {
       type: 'erc20',
       rpc: {
         url: 'https://ropsten.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6'
@@ -67,20 +67,7 @@ export default {
         type: 'scraper',
         url: 'https://eth-ropsten-api.liq-chainhub.net/'
       },
-      contractAddress: '0xcE2748BE67fB4346654B4500c4BB0642536365FC',
-      network: 'ropsten',
-      explorerPath: 'https://ropsten.etherscan.io/tx/0x'
-    },
-    USDC: {
-      type: 'erc20',
-      rpc: {
-        url: 'https://ropsten.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6'
-      },
-      api: {
-        type: 'scraper',
-        url: 'https://eth-ropsten-api.liq-chainhub.net/'
-      },
-      contractAddress: '0xcE2748BE67fB4346654B4500c4BB0642536365FC',
+      contractAddress: '0xFab46E002BbF0b4509813474841E0716E6730136',
       network: 'ropsten',
       explorerPath: 'https://ropsten.etherscan.io/tx/0x'
     },
