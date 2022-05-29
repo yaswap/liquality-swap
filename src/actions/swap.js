@@ -201,6 +201,7 @@ async function initiateSwap (dispatch, getState) {
   if (wallets.a.type === 'metamask') { // TODO: fix properly
     alert('Please do not use the "Speed up" function to bump the priority of the transaction as this is not yet supported.')
   }
+  console.log("TACA ===> swap.js, initiateSwap, initiationTx = ", initiationTx)
   console.log("TACA ===> swap.js, initiateSwap, calling setTransaction a")
   dispatch(transactionActions.setTransaction('a', 'initiation', { hash: initiationTx.hash }))
   dispatch(transactionActions.setStartBlock('a', blockNumber))
@@ -263,6 +264,7 @@ async function fundSwap (dispatch, getState) {
     if (wallets.a.type === 'metamask') { // TODO: fix properly
       alert('Please do not use the "Speed up" function to bump the priority of the transaction as this is not yet supported.')
     }
+    console.log("TACA ===> swap.js, initiateSwap, fundTx = ", fundTx)
     console.log("TACA ===> swap.js, fundSwap, calling setTransaction a")
     dispatch(transactionActions.setTransaction('a', 'fund', { hash: fundTx.hash }))
   }
@@ -436,6 +438,7 @@ async function claimSwap (dispatch, getState) {
   }
   const claimTx = await client.swap.claimSwap(...claimSwapParams)
   console.log("TACA ===> swap.js, claimSwap, calling setTransaction a")
+  console.log("TACA ===> swap.js, claimSwap, claimTx = ", claimTx)
   dispatch(transactionActions.setTransaction('a', 'claim', { hash: claimTx.hash, blockNumber }))
 }
 
@@ -497,6 +500,7 @@ function refundSwap () {
       await withLoadingMessage('a', dispatch, getState, async () => {
         const refundTx = await client.swap.refundSwap(...refundSwapParams)
         console.log("TACA ===> swap.js, refundSwap, calling setTransaction a")
+        console.log("TACA ===> swap.js, refundSwap, refundTx = ", refundTx)
         dispatch(transactionActions.setTransaction('a', 'refund', { hash: refundTx.hash, blockNumber }))
       })
     })

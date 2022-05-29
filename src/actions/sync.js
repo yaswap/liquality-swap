@@ -90,7 +90,7 @@ async function findClaimSwapTransaction (party, blockNumber, dispatch, getState)
 
   console.log("TACA ===> sync.js, findClaimSwapTransaction, claimTransaction = ", claimTransaction)
   if (claimTransaction) {
-    console.log("TACA ===> sync.js, findClaimSwapTransaction, calling setSecret with secrec = ", claimTransaction.secret)
+    console.log("TACA ===> sync.js, findClaimSwapTransaction, calling setSecret with secret = ", claimTransaction.secret)
     dispatch(secretActions.setSecret(claimTransaction.secret))
     console.log("TACA ===> sync.js, findClaimSwapTransaction, calling setTransaction for party = ", party, ", tx = ", claimTransaction)
     dispatch(transactionActions.setTransaction(party, 'claim', claimTransaction))
@@ -221,6 +221,7 @@ function sync (party) {
         const currentBlock = await client.chain.getBlockHeight()
         if (currentBlock > blockNumber) {
           blockNumber++
+          console.log("TACA ===> sync.js, sync, increase blockNumber to ", blockNumber)
           dispatch(setCurrentBlock(party, blockNumber))
           dispatch(setSynced(party, false))
           if (config.syncDelay > 0) {
