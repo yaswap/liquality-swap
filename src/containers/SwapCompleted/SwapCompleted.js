@@ -28,11 +28,22 @@ class SwapCompleted extends Component {
     this.state = this.getExpirationState()
   }
 
-  getTransaction (party) {
+  getInitTransaction (party) {
     const tx = this.props.transactions[party].initiation
     if (!tx.hash) return null
 
     const asset = this.props.assets[party].currency
+    const explorerLink = tx && getExplorerLink(tx, asset)
+    tx.explorerLink = explorerLink
+    return tx
+  }
+
+  getClaimTransaction (party) {
+    const claimAsset = party === 'a' ? 'b' : 'a'
+    const tx = this.props.transactions[party].claim
+    if (!tx.hash) return null
+
+    const asset = this.props.assets[claimAsset].currency
     const explorerLink = tx && getExplorerLink(tx, asset)
     tx.explorerLink = explorerLink
     return tx
@@ -48,8 +59,10 @@ class SwapCompleted extends Component {
       expiration: expiration.time,
       now: moment(),
       transactions: {
-        a: this.getTransaction('a'),
-        b: this.getTransaction('b')
+        aInit: this.getInitTransaction('a'),
+        aClaim: this.getClaimTransaction('a'),
+        bInit: this.getInitTransaction('b'),
+        bClaim: this.getClaimTransaction('b')
       }
     }
   }
@@ -78,13 +91,13 @@ class SwapCompleted extends Component {
 
     return <div className='SwapCompleted'>
 
-      <div className='SwapCompleted_confetti-wrapper'>
+      {/* <div className='SwapCompleted_confetti-wrapper'>
 
         <div>{Array.from({ length: 150 }, (_, i) => (
           <div key={i} className={`confetti-${i}`} />
         ))}</div>
 
-      </div>
+      </div> */}
 
       <BrandCard title='Swap Completed'>
 
@@ -106,12 +119,12 @@ class SwapCompleted extends Component {
         </div>
         <div className='SwapCompleted_bottom px-2 mt-5'>
           <div className='SwapCompleted_right'>
-            <h4><strong><span className='SwapCompleted_transactionTitle'>Partner {sentCurrency.code} Init Transaction:</span></strong><a className='SwapCompleted_transactionHash' href={this.props.transactions.b.initiation.explorerLink} target='_blank' rel='noopener noreferrer'>{shortenTransactionHash(this.props.transactions.b.initiation.hash)}</a><span className='SwapCompleted_confs' >{this.props.transactions.b.initiation.confirmations} <span className='SwapCompleted_confText'>Confirmations</span></span></h4>
-            {this.props.transactions.b.claim.hash ? <h4><strong><span className='SwapCompleted_transactionTitle'>Partner {claimCurrency.code} Claim Transaction:</span></strong><a className='SwapCompleted_transactionHash' href={this.props.transactions.b.claim.explorerLink} target='_blank' rel='noopener noreferrer'>{shortenTransactionHash(this.props.transactions.b.claim.hash)}</a><span className='SwapCompleted_confs' >{this.props.transactions.b.claim.confirmations}</span><span className='SwapCompleted_confText'>Confirmations</span></h4> : '' }
+            <h4><strong><span className='SwapCompleted_transactionTitle'>Partner {claimCurrency.code} Init Transaction:</span></strong><a className='SwapCompleted_transactionHash' href={this.props.transactions.b.initiation.explorerLink} target='_blank' rel='noopener noreferrer'>{shortenTransactionHash(this.props.transactions.b.initiation.hash)}</a><span className='SwapCompleted_confs' >{this.props.transactions.b.initiation.confirmations} <span className='SwapCompleted_confText'>Confirmations</span></span></h4>
+            {this.props.transactions.b.claim.hash ? <h4><strong><span className='SwapCompleted_transactionTitle'>Partner {sentCurrency.code} Claim Transaction:</span></strong><a className='SwapCompleted_transactionHash' href={this.state.transactions.bClaim.explorerLink} target='_blank' rel='noopener noreferrer'>{shortenTransactionHash(this.props.transactions.b.claim.hash)}</a><span className='SwapCompleted_confs' >{this.props.transactions.b.claim.confirmations}</span><span className='SwapCompleted_confText'>Confirmations</span></h4> : '' }
           </div>
           <div className='SwapCompleted_left'>
             <h4><strong><span className='SwapCompleted_transactionTitle'>Your {sentCurrency.code} Init Transaction:</span></strong><a className='SwapCompleted_transactionHash' href={this.props.transactions.a.initiation.explorerLink} target='_blank' rel='noopener noreferrer'>{shortenTransactionHash(this.props.transactions.a.initiation.hash)}</a><span className='SwapCompleted_confs' >{this.props.transactions.a.initiation.confirmations}</span><span className='SwapCompleted_confText'>Confirmations</span></h4>
-            {this.props.transactions.a.claim.hash ? <h4><strong><span className='SwapCompleted_transactionTitle'>Your {claimCurrency.code} Claim Transaction:</span></strong><a className='SwapCompleted_transactionHash' href={this.props.transactions.a.claim.explorerLink} target='_blank' rel='noopener noreferrer'>{shortenTransactionHash(this.props.transactions.a.claim.hash)}</a><span className='SwapCompleted_confs' >{this.props.transactions.a.claim.confirmations}</span><span className='SwapCompleted_confText'>Confirmations</span></h4> : '' }
+            {this.props.transactions.a.claim.hash ? <h4><strong><span className='SwapCompleted_transactionTitle'>Your {claimCurrency.code} Claim Transaction:</span></strong><a className='SwapCompleted_transactionHash' href={this.state.transactions.aClaim.explorerLink} target='_blank' rel='noopener noreferrer'>{shortenTransactionHash(this.props.transactions.a.claim.hash)}</a><span className='SwapCompleted_confs' >{this.props.transactions.a.claim.confirmations}</span><span className='SwapCompleted_confText'>Confirmations</span></h4> : '' }
           </div>
         </div>
         <div className='SwapCompleted_link mt-2'>
