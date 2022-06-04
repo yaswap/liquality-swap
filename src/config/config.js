@@ -8,17 +8,6 @@ const footerVersion = `${process.env.REACT_APP_COMMIT_REF ||
 
 export default {
   assets: {
-    MATIC: {
-      rpc: {
-        url: "https://rpc-mainnet.matic.network/",
-      },
-      api: {
-        type: "scraper",
-        url: "https://liquality.io/polygon-mainnet-api",
-      },
-      network: "polygon_mainnet",
-      explorerPath: "https://explorer-mainnet.maticvigil.com/tx/0x",
-    },
     ETH: {
       rpc: {
         url: "https://mainnet.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
@@ -114,9 +103,6 @@ export default {
       contractAddress: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
       network: "ethereum_mainnet",
       explorerPath: "https://etherscan.io/tx/0x",
-    },
-    NEAR: {
-      explorerPath: "https://explorer.mainnet.near.org/transactions/",
     },
   },
   defaultFee: "average",
