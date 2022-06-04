@@ -8,17 +8,6 @@ const footerVersion = `${process.env.REACT_APP_COMMIT_REF ||
 
 export default {
   assets: {
-    MATIC: {
-      rpc: {
-        url: "https://rpc-mumbai.maticvigil.com/",
-      },
-      api: {
-        type: "scraper",
-        url: "https://liquality.io/polygon-testnet-api",
-      },
-      network: "polygon_testnet",
-      explorerPath: "https://explorer-mumbai.maticvigil.com/tx/0x",
-    },
     ETH: {
       rpc: {
         url: "https://ropsten.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
@@ -62,9 +51,6 @@ export default {
       contractAddress: "0xFab46E002BbF0b4509813474841E0716E6730136",
       network: "ropsten",
       explorerPath: "https://ropsten.etherscan.io/tx/0x",
-    },
-    NEAR: {
-      explorerPath: "https://explorer.testnet.near.org/transactions/",
     },
   },
 
