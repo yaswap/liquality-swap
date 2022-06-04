@@ -30,11 +30,8 @@ async function connectToWallet (party, wallet, dispatch, getState) {
   const networkClient = getNetworkClient(currencyCode, wallet)
 
   const addressesPerCall = 100
-  console.log("TACA ===> connectToWallet, calling getUnusedAddress")
   const unusedAddress = await client.wallet.getUnusedAddress()
-  console.log("TACA ===> connectToWallet, unusedAddress = ", unusedAddress)
   let allAddresses = await client.wallet.getUsedAddresses(addressesPerCall)
-  console.log("TACA ===> connectToWallet, allAddresses = ", allAddresses)
   allAddresses = [ ...new Set([ unusedAddress, ...allAddresses ].map(a => a.address)) ]
   allAddresses = allAddresses.map(address => chain.formatAddress(address))
   if (wallets[party].addresses[0] !== null) { // Preserve the preset address for party B

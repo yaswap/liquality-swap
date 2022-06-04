@@ -48,13 +48,10 @@ async function findInitiateSwapTransaction (party, blockNumber, dispatch, getSta
     secretHash: secretParams.secretHash,
     expiration: swapExpiration.unix()
   }
-  console.log("TACA ===> sync.js, findInitiateSwapTransaction, swapParams = ", swapParams)
-  console.log("TACA ===> sync.js, findInitiateSwapTransaction, calling CAL findInitiateSwapTransaction")
   const initiateTransaction = await catchSwapCallError(async () =>
     client.swap.findInitiateSwapTransaction(swapParams, blockNumber),
   dispatch)
   if (initiateTransaction) {
-    console.log("TACA ===> sync.js, findInitiateSwapTransaction, calling setTransaction for party = ", party, ", tx = ", initiateTransaction)
     dispatch(transactionActions.setTransaction(party, 'initiation', initiateTransaction))
   }
 }
@@ -82,17 +79,12 @@ async function findClaimSwapTransaction (party, blockNumber, dispatch, getState)
     secretHash: secretParams.secretHash,
     expiration: swapExpiration.unix()
   }
-  console.log("TACA ===> sync.js, findClaimSwapTransaction, swapParams = ", swapParams)
-  console.log("TACA ===> sync.js, findClaimSwapTransaction, calling CAL findClaimSwapTransaction")
   const claimTransaction = await catchSwapCallError(async () =>
     client.swap.findClaimSwapTransaction(swapParams, transactions[oppositeParty].initiation.hash, blockNumber),
   dispatch)
 
-  console.log("TACA ===> sync.js, findClaimSwapTransaction, claimTransaction = ", claimTransaction)
   if (claimTransaction) {
-    console.log("TACA ===> sync.js, findClaimSwapTransaction, calling setSecret with secret = ", claimTransaction.secret)
     dispatch(secretActions.setSecret(claimTransaction.secret))
-    console.log("TACA ===> sync.js, findClaimSwapTransaction, calling setTransaction for party = ", party, ", tx = ", claimTransaction)
     dispatch(transactionActions.setTransaction(party, 'claim', claimTransaction))
   }
 }
@@ -122,14 +114,10 @@ async function findRefundSwapTransaction (party, blockNumber, dispatch, getState
     secretHash: secretParams.secretHash,
     expiration: swapExpiration.unix()
   }
-  console.log("TACA ===> sync.js, findRefundSwapTransaction, swapParams = ", swapParams)
-  console.log("TACA ===> sync.js, findRefundSwapTransaction, calling CAL findRefundSwapTransaction")
   const refundTransaction = await catchSwapCallError(async () =>
     client.swap.findRefundSwapTransaction(swapParams, transactions[party].initiation.hash, blockNumber),
   dispatch)
-  console.log("TACA ===> sync.js, findRefundSwapTransaction, refundTransaction = ", refundTransaction)
   if (refundTransaction) {
-    console.log("TACA ===> sync.js, findRefundSwapTransaction, calling setTransaction for party = ", party, ", tx = ", refundTransaction)
     dispatch(transactionActions.setTransaction(party, 'refund', refundTransaction))
   }
 }
@@ -154,31 +142,25 @@ async function verifyInitiateSwapTransaction (dispatch, getState) {
     secretHash: secretParams.secretHash,
     expiration: swapExpiration.unix()
   }
-  console.log("TACA ===> sync.js, verifyInitiateSwapTransaction, swapParams = ", swapParams)
-  console.log("TACA ===> sync.js, verifyInitiateSwapTransaction, calling CAL verifyInitiateSwapTransaction")
   const swapVerified = await catchSwapCallError(async () =>
     client.swap.verifyInitiateSwapTransaction(swapParams, transactions.b.initiation.hash),
   dispatch)
-  console.log("TACA ===> sync.js, verifyInitiateSwapTransaction, swapVerified = ", swapVerified)
 
   // ERC20 swaps have separate funding tx. Ensures funding tx has enough confirmations
   const fundingTransaction = await catchSwapCallError(async () =>
     client.swap.findFundSwapTransaction(swapParams, transactions.b.initiation.hash),
   dispatch)
-  console.log("TACA ===> sync.js, verifyInitiateSwapTransaction, fundingTransaction = ", fundingTransaction)
   if (fundingTransaction === undefined) return
 
   const fundingConfirmed = fundingTransaction ? fundingTransaction.confirmations >= chains[cryptoassets[currency].chain].safeConfirmations : true
 
   if (swapVerified && fundingConfirmed) {
-    console.log("TACA ===> sync.js, verifyInitiateSwapTransaction, setIsVerified")
     dispatch(transactionActions.setIsVerified(true))
   }
 }
 
 function sync (party) {
   return async (dispatch, getState) => {
-    console.log("TACA ===> sync.js, sync, BEGIN")
     const { transactions, assets, wallets } = getState().swap
     const startBlock = transactions[party].startBlock
     const client = getClient(assets[party].currency, wallets[party].type)
@@ -188,27 +170,20 @@ function sync (party) {
     let blockNumber = startBlock
     do {
       let swap = getState().swap
-      console.log("TACA ===> sync.js, sync, party = ", party)
-      console.log("TACA ===> sync.js, sync, swap state 1 = ", swap)
       if (!swap.sync[party].synced) {
         if (!swap.transactions[party].initiation.hash) {
-          console.log("TACA ===> sync.js, sync, calling findInitiateSwapTransaction")
           await findInitiateSwapTransaction(party, blockNumber, dispatch, getState)
         }
         swap = getState().swap
-        console.log("TACA ===> sync.js, sync, swap state 2 = ", swap)
         if (swap.transactions[party].initiation.hash) {
           if (party === 'b' && !swap.transactions.isVerified) {
-            console.log("TACA ===> sync.js, sync, calling verifyInitiateSwapTransaction")
             await verifyInitiateSwapTransaction(dispatch, getState)
           }
           const oppositeParty = party === 'a' ? 'b' : 'a'
           if (!swap.transactions[oppositeParty].claim.hash) {
-            console.log("TACA ===> sync.js, sync, calling findClaimSwapTransaction")
             await findClaimSwapTransaction(oppositeParty, blockNumber, dispatch, getState)
           }
           if (!swap.transactions[party].refund.hash) {
-            console.log("TACA ===> sync.js, sync, calling findRefundSwapTransaction")
             await findRefundSwapTransaction(party, blockNumber, dispatch, getState)
           }
         }
@@ -217,11 +192,9 @@ function sync (party) {
       const assetClient = getClient(assets[party].currency, wallets[party].type)
 
       if (assetClient.swap.doesBlockScan) {
-        console.log("TACA ===> sync.js, sync, doesBlockScan and sleep")
         const currentBlock = await client.chain.getBlockHeight()
         if (currentBlock > blockNumber) {
           blockNumber++
-          console.log("TACA ===> sync.js, sync, increase blockNumber to ", blockNumber)
           dispatch(setCurrentBlock(party, blockNumber))
           dispatch(setSynced(party, false))
           if (config.syncDelay > 0) {
@@ -232,12 +205,10 @@ function sync (party) {
           await sleep(assetConfig.syncInterval || DEFAULT_SYNC_INTERVAL)
         }
       } else {
-        console.log("TACA ===> sync.js, sync, sleep")
         await sleep(assetConfig.syncInterval || DEFAULT_SYNC_INTERVAL)
       }
     }
     while (true)
-    console.log("TACA ===> sync.js, sync, FINISH")
   }
 }
 

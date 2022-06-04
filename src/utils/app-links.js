@@ -49,10 +49,8 @@ function generateLink (swap, counterparty = false) {
 }
 
 function generateSwapState (location) {
-  console.log("TACA ===> app-links.js, generateSwapState BEGIN")
   if (!location.hash || !location.hash.includes('ccy1'))
   {
-    console.log("TACA ===> app-links.js, generateSwapState, return undefined")
     return undefined // no state
   }
   const urlParams = queryString.parse(location.hash.replace('#', ''))
@@ -83,7 +81,6 @@ function generateSwapState (location) {
     isPartyB: urlParams.isPartyB === 'true',
     link: location.href
   }
-  console.log("TACA ===> app-links.js, generateSwapState, swapState = ", swapState)
   return swapState
 }
 

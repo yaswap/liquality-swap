@@ -43,10 +43,6 @@ class LiqualitySwap extends Component {
     const link = this.props.swap.link
     const skipCounterParty = this.props.swap.isPartyB || this.props.swap.agent.quote
     return <BackupLinkCard link={link} onNextClick={() => {
-      console.log(
-        "TACA ===> LiqualitySwap.js, onNextClick BackupLinkCard, calling replace(",
-        skipCounterParty ? "/waiting" : "/counterPartyLink"
-      );
       this.props.history.replace(skipCounterParty ? '/waiting' : '/counterPartyLink')
     }} />
   }
@@ -54,9 +50,6 @@ class LiqualitySwap extends Component {
   getCounterPartyLinkCard () {
     const link = generateLink(this.props.swap, true)
     return <CounterPartyLinkCard link={link} onNextClick={() => { 
-      console.log(
-        "TACA ===> LiqualitySwap.js, onNextClick CounterPartyLinkCard, calling replace(/waiting)"
-      );
       this.props.history.replace('/waiting') 
     }} />
   }
@@ -91,32 +84,19 @@ class LiqualitySwap extends Component {
     const walletA = this.props.swap.wallets.a
     const walletB = this.props.swap.wallets.b
     let closeAction = () => {
-      console.log(
-        "TACA ===> LiqualitySwap.js, getConnectWallet, calling replace(",
-        this.props.swap.agent.quote ? '/offerConfirmation' : '/assetSelection'
-      );
       this.props.history.replace(this.props.swap.agent.quote ? '/offerConfirmation' : '/assetSelection')
     }
     if (currentWallet === 'b' && walletB.connected) {
       closeAction = () => { 
-        console.log(
-          "TACA ===> LiqualitySwap.js, getConnectWallet, calling replace(/walletA)"
-        );
         this.props.history.replace('/walletA')
       }
     } else if (currentWallet === 'a' && walletA.connected) {
       closeAction = () => {
-        console.log(
-          "TACA ===> LiqualitySwap.js, getConnectWallet, calling replace(/initiation)"
-        );
         this.props.history.replace('/initiation')
         this.props.setStep(steps.INITIATION)
       }
     } else if (currentWallet === 'a') {
       closeAction = () => {
-        console.log(
-          "TACA ===> LiqualitySwap.js, getConnectWallet, calling replace(/walletB)"
-        );
         this.props.history.replace('/walletB')
       }
     }

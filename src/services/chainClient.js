@@ -93,7 +93,6 @@ function createBtcClient (asset, wallet) {
 function createYacClient(asset, wallet) {
   const yacConfig = config.assets.YAC;
   const network = YacoinNetworks[yacConfig.network];
-  console.log("TACA ===> createYacClient, network = ", network)
 
   const yacClient = new Client();
   if (wallet === "liquality") {
