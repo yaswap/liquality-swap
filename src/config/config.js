@@ -10,25 +10,25 @@ export default {
   assets: {
     ETH: {
       rpc: {
-        url: "https://mainnet.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
+        url: "https://ropsten.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
       },
       api: {
         type: "scraper",
-        url: "https://liquality.io/eth-mainnet-api",
+        url: "https://eth-ropsten-api.liq-chainhub.net/",
       },
-      network: "ethereum_mainnet",
-      explorerPath: "https://etherscan.io/tx/0x",
+      network: "ropsten",
+      explorerPath: "https://ropsten.etherscan.io/tx/0x",
     },
     BTC: {
       api: {
-        url: "https://liquality.io/electrs",
+        url: "https://liquality.io/testnet/electrs",
       },
       batchApi: {
-        url: "https://liquality.io/electrs-batch",
+        url: "https://liquality.io/electrs-testnet-batch",
       },
       feeNumberOfBlocks: 2,
-      network: "bitcoin",
-      explorerPath: "https://blockstream.info/tx/",
+      network: "bitcoin_testnet",
+      explorerPath: "https://blockstream.info/testnet/tx/",
     },
     YAC: {
       api: {
@@ -36,80 +36,29 @@ export default {
         esploraSwapUrl: "http://73.43.56.247:3001",
       },
       feeNumberOfBlocks: 1,
-      network: "yacoin",
+      network: "yacoin_testnet",
       explorerPath: "http://73.43.56.247:3001/tx/",
     },
-    DAI: {
+    FAU: {
       type: "erc20",
       rpc: {
-        url: "https://mainnet.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
+        url: "https://ropsten.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
       },
       api: {
         type: "scraper",
-        url: "https://liquality.io/eth-mainnet-api",
+        url: "https://eth-ropsten-api.liq-chainhub.net/",
       },
-      contractAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
-      network: "ethereum_mainnet",
-      explorerPath: "https://etherscan.io/tx/0x",
-    },
-    USDC: {
-      type: "erc20",
-      rpc: {
-        url: "https://mainnet.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
-      },
-      api: {
-        type: "scraper",
-        url: "https://liquality.io/eth-mainnet-api",
-      },
-      contractAddress: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-      network: "ethereum_mainnet",
-      explorerPath: "https://etherscan.io/tx/0x",
-    },
-    USDT: {
-      type: "erc20",
-      rpc: {
-        url: "https://mainnet.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
-      },
-      api: {
-        type: "scraper",
-        url: "https://liquality.io/eth-mainnet-api",
-      },
-      contractAddress: "0xdac17f958d2ee523a2206206994597c13d831ec7",
-      network: "ethereum_mainnet",
-      explorerPath: "https://etherscan.io/tx/0x",
-    },
-    WBTC: {
-      type: "erc20",
-      rpc: {
-        url: "https://mainnet.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
-      },
-      api: {
-        type: "scraper",
-        url: "https://liquality.io/eth-mainnet-api",
-      },
-      contractAddress: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
-      network: "ethereum_mainnet",
-      explorerPath: "https://etherscan.io/tx/0x",
-    },
-    UNI: {
-      type: "erc20",
-      rpc: {
-        url: "https://mainnet.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
-      },
-      api: {
-        type: "scraper",
-        url: "https://liquality.io/eth-mainnet-api",
-      },
-      contractAddress: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
-      network: "ethereum_mainnet",
-      explorerPath: "https://etherscan.io/tx/0x",
+      contractAddress: "0xFab46E002BbF0b4509813474841E0716E6730136",
+      network: "ropsten",
+      explorerPath: "https://ropsten.etherscan.io/tx/0x",
     },
   },
+
   defaultFee: "average",
   hostName: "Liquality",
   hostIcon:
     "https://raw.githubusercontent.com/liquality/chainabstractionlayer/master/liquality-logo.png",
-  // agents: ["https://liquality.io/swap/agent"],
+  agents: ['http://localhost:3030'],
   injectScript: `
   function loadScript(src, callback) {
     var s,
@@ -132,26 +81,22 @@ export default {
   }
 
   function addSentry () {
-    loadScript('https://browser.sentry-cdn.com/5.27.1/bundle.min.js', function () {
-      loadScript('https://browser.sentry-cdn.com/5.27.1/captureconsole.min.js', function () {
-        loadScript('https://browser.sentry-cdn.com/5.27.1/bundle.tracing.min.js', function () {
-          var dsn = window.location.pathname.indexOf('-dev') !== -1
-            ? 'https://816ae35527f34f4fbde7165d34046382@sentry.io/4693986'
-            : 'https://8ecc6862378646dd819d160876b47f75@sentry.io/4693923'
+    loadScript('https://browser.sentry-cdn.com/5.18.1/bundle.min.js', function () {
+      loadScript('https://browser.sentry-cdn.com/5.18.1/captureconsole.min.js', function () {
+        var dsn = window.location.pathname.indexOf('-dev') !== -1
+          ? 'https://47837321894a4befa9211cf8754587dc@sentry.io/4694007'
+          : 'https://d9929a726dba4e929d6fded47f4b3fb4@sentry.io/4693957'
 
-          Sentry.init({
-            dsn: dsn,
-            integrations: [
-              new Sentry.Integrations.CaptureConsole({
-                levels: ['error']
-              }),
-              new Sentry.Integrations.BrowserTracing()
-            ],
-            release: '${footerVersion}',
-            ignoreErrors: ['NodeError: timeout of 0ms exceeded', 'NodeError: Network Error'],
-            tracesSampleRate: 1.0
-          })
-        });
+        Sentry.init({
+          dsn: dsn,
+          integrations: [
+            new Sentry.Integrations.CaptureConsole({
+              levels: ['error']
+            })
+          ],
+          release: '${footerVersion}',
+          ignoreErrors: ['NodeError: timeout of 0ms exceeded', 'NodeError: Network Error']
+        })
       });
     });
   }
@@ -161,6 +106,14 @@ export default {
       app_id: "hzt4o9u6"
     };
     (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/hzt4o9u6';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+  }
+
+  function addGTM () {
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-52D86Z5');
   }
 
   function addGA () {
@@ -187,14 +140,6 @@ export default {
     };
   }
 
-  function addGTM () {
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-52D86Z5');
-  }
-
   function addFullStory () {
     window['_fs_debug'] = false;
     window['_fs_host'] = 'fullstory.com';
@@ -213,32 +158,12 @@ export default {
     })(window,document,window['_fs_namespace'],'script','user');
   }
 
-  function addHotJar () {
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1260353,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    const interval = setInterval(() => { // Trigger feedback
-      if(document.getElementsByClassName('SwapCompleted').length ||
-        document.getElementsByClassName('SwapRedemption').length ||
-        document.getElementsByClassName('SwapRefund').length) {
-        hj('trigger', 'swap_completed_feedback');
-        clearInterval(interval);
-      }
-    }, 4000);
-  }
-
   function addAnalytics () {
-    addGTM();
     addGA();
+    addGTM();
     addIntercom();
     addSentry();
     addFullStory();
-    addHotJar();
   }
 
   if (window.localStorage.getItem('enableAnalytics') == 'true') {
@@ -258,7 +183,6 @@ export default {
       document.getElementById("terms").style = '';
     }
   }
-
   `,
   injectFooter: `<p style="text-align: center; margin-bottom: 8px">
   <a href="https://liquality.io/support" target="_blank">FAQ</a>
