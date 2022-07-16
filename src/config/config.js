@@ -14,17 +14,17 @@ export default {
       },
       api: {
         type: "scraper",
-        url: "https://eth-ropsten-api.liq-chainhub.net/",
+        url: "http://localhost:8080/",
       },
       network: "ropsten",
       explorerPath: "https://ropsten.etherscan.io/tx/0x",
     },
     BTC: {
       api: {
-        url: "https://liquality.io/testnet/electrs",
+        url: "https://electrs-testnet-api.liq-chainhub.net/",
       },
       batchApi: {
-        url: "https://liquality.io/electrs-testnet-batch",
+        url: "https://electrs-batch-testnet-api.liq-chainhub.net/",
       },
       feeNumberOfBlocks: 2,
       network: "bitcoin_testnet",
@@ -46,7 +46,7 @@ export default {
       },
       api: {
         type: "scraper",
-        url: "https://eth-ropsten-api.liq-chainhub.net/",
+        url: "http://localhost:8080/",
       },
       contractAddress: "0xFab46E002BbF0b4509813474841E0716E6730136",
       network: "ropsten",
