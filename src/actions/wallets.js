@@ -1,6 +1,6 @@
 import { getClient, getNetworkClient } from '../services/chainClient'
 import { steps } from '../components/SwapProgressStepper/steps'
-import { assets as cryptoassets, chains, unitToCurrency } from '@liquality/cryptoassets'
+import { assets as cryptoassets, chains, unitToCurrency } from '@yac-swap/cryptoassets'
 
 const types = {
   TOGGLE_WALLET_CONNECT: 'TOGGLE_WALLET_CONNECT',

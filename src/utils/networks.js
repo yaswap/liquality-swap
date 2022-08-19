@@ -1,6 +1,6 @@
-import { BitcoinNetworks } from '@liquality/bitcoin-networks'
-import { EthereumNetworks } from '@liquality/ethereum-networks'
-import { YacoinNetworks } from '@liquality/yacoin-networks'
+import { BitcoinNetworks } from '@yac-swap/bitcoin-networks'
+import { EthereumNetworks } from '@yac-swap/ethereum-networks'
+import { YacoinNetworks } from '@yac-swap/yacoin-networks'
 import config from '../config'
 import moment from 'moment'
 

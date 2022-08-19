@@ -6,7 +6,7 @@ import moment from 'moment'
 import BrandCard from '../../components/BrandCard/BrandCard'
 import { getFundExpiration, getClaimExpiration } from '../../utils/expiration'
 import { shortenTransactionHash, getExplorerLink } from '../../utils/transactions'
-import { assets as cryptoassets, chains } from '@liquality/cryptoassets'
+import { assets as cryptoassets, chains } from '@yac-swap/cryptoassets'
 import withCopyButton from '../../components/withCopyButton'
 import CopyIcon from '../../icons/copy.svg'
 

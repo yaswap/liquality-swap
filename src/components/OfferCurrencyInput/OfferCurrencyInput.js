@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { assets as cryptoassets } from '@liquality/cryptoassets'
+import { assets as cryptoassets } from '@yac-swap/cryptoassets'
 import './OfferCurrencyInput.css'
 import OfferAssetSelector from '../OfferAssetSelector/OfferAssetSelector'
 

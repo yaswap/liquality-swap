@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { assets as cryptoassets } from '@liquality/cryptoassets'
+import { assets as cryptoassets } from '@yac-swap/cryptoassets'
 import BrandCard from '../../components/BrandCard/BrandCard'
 import TransactionDetails from '../../components/TransactionDetails'
 import StatusMessage from '../../components/StatusMessage/StatusMessage'

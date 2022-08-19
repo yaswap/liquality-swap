@@ -5,7 +5,7 @@ import BigNumber from 'bignumber.js'
 import Button from '../Button/Button'
 import { shortenAddress } from '../../utils/address'
 
-import { assets as cryptoassets, chains } from '@liquality/cryptoassets'
+import { assets as cryptoassets, chains } from '@yac-swap/cryptoassets'
 import { wallets } from '../../utils/wallets'
 import WalletIcon from './wallet-icon.svg'
 import { ReactComponent as Dot } from '../../icons/greenDot.svg'

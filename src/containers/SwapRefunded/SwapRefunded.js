@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import BrandCard from '../../components/BrandCard/BrandCard'
 import HexaDisplay from '../../components/HexaDisplay/HexaDisplay'
 import Button from '../../components/Button/Button'
-import { assets as cryptoassets } from '@liquality/cryptoassets'
+import { assets as cryptoassets } from '@yac-swap/cryptoassets'
 import { APP_BASE_URL } from '../../utils/app-links'
 import { shortenTransactionHash, getExplorerLink } from '../../utils/transactions'
 

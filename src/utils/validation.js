@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { assets as cryptoassets, chains, unitToCurrency } from '@liquality/cryptoassets'
+import { assets as cryptoassets, chains, unitToCurrency } from '@yac-swap/cryptoassets'
 import config from '../config'
 import { isEthereumAsset } from './networks'
 import { generateSwapState } from './app-links'
