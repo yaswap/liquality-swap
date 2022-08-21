@@ -1,6 +1,6 @@
 import { replace } from 'connected-react-router'
 import moment from 'moment'
-import { assets as cryptoassets, chains } from '@yac-swap/cryptoassets'
+import { assets as cryptoassets, chains } from '@yaswap/cryptoassets'
 import config from '../config'
 import { actions as swapActions } from './swap'
 import { steps } from '../components/SwapProgressStepper/steps'

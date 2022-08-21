@@ -1,4 +1,4 @@
-import { assets as cryptoassets, chains, currencyToUnit } from '@yac-swap/cryptoassets'
+import { assets as cryptoassets, chains, currencyToUnit } from '@yaswap/cryptoassets'
 import { getClient } from '../services/chainClient'
 import { sleep } from '../utils/async'
 import { actions as secretActions } from './secretparams'

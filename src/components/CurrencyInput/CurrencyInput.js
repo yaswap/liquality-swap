@@ -6,7 +6,7 @@ import DropDownTick from '../../icons/dropdownTick.svg'
 import * as assetUtils from '../../utils/assets'
 import config from '../../config'
 
-import { assets as cryptoassets } from '@yac-swap/cryptoassets'
+import { assets as cryptoassets } from '@yaswap/cryptoassets'
 import './CurrencyInput.css'
 
 class CurrencyInput extends Component {

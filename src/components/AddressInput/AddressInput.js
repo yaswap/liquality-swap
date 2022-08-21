@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { assets as cryptoassets, chains } from '@yac-swap/cryptoassets'
+import { assets as cryptoassets, chains } from '@yaswap/cryptoassets'
 import * as assetUtils from '../../utils/assets'
 import './AddressInput.css'
 import TickIcon from './tick.svg'

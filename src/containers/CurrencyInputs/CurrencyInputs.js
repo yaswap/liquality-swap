@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { assets as cryptoassets } from '@yac-swap/cryptoassets'
+import { assets as cryptoassets } from '@yaswap/cryptoassets'
 import { getCurrencyInputErrors } from '../../utils/validation'
 import CurrencyInput from '../../components/CurrencyInput/CurrencyInput'
 import BigNumber from 'bignumber.js'

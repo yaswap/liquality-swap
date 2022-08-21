@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import BigNumber from 'bignumber.js'
 
-import { assets as cryptoassets } from '@yac-swap/cryptoassets'
+import { assets as cryptoassets } from '@yaswap/cryptoassets'
 import './Rate.css'
 
 const Rate = (props) => (

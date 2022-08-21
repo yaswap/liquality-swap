@@ -1,6 +1,6 @@
 import axios from 'axios'
 import _ from 'lodash'
-import { assets as cryptoassets } from '@yac-swap/cryptoassets'
+import { assets as cryptoassets } from '@yaswap/cryptoassets'
 
 class CoinGecko {
   constructor (url = 'https://api.coingecko.com/api/v3') {

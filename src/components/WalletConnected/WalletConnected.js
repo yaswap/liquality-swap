@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { assets as cryptoassets } from '@yac-swap/cryptoassets'
+import { assets as cryptoassets } from '@yaswap/cryptoassets'
 import Button from '../../components/Button/Button'
 import { shortenAddress } from '../../utils/address'
 import { wallets } from '../../utils/wallets'

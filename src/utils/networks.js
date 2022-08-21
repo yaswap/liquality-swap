@@ -1,6 +1,6 @@
-import { BitcoinNetworks } from '@yac-swap/bitcoin-networks'
-import { EthereumNetworks } from '@yac-swap/ethereum-networks'
-import { YacoinNetworks } from '@yac-swap/yacoin-networks'
+import { BitcoinNetworks } from '@yaswap/bitcoin-networks'
+import { EthereumNetworks } from '@yaswap/ethereum-networks'
+import { YacoinNetworks } from '@yaswap/yacoin-networks'
 import config from '../config'
 import moment from 'moment'
 

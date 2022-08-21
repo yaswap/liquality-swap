@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { assets as cryptoassets } from '@yac-swap/cryptoassets'
+import { assets as cryptoassets } from '@yaswap/cryptoassets'
 import { getFundExpiration, getClaimExpiration } from '../../utils/expiration'
 import { shortenTransactionHash, getExplorerLink } from '../../utils/transactions'
 import withCopyButton from '../withCopyButton'
