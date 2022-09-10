@@ -155,7 +155,7 @@ class SwapInitiation extends Component {
       circle = <div className='SwapInitiation_liqualityCircle'>
         <h3>Trade With</h3>
         <div className='SwapInitiation_logo'>
-          <img src={Logo} alt='liquality-logo' />
+          <img src={Logo} alt='yaswap-logo' />
         </div>
       </div>
     } else {
@@ -163,7 +163,7 @@ class SwapInitiation extends Component {
     }
 
     return <div className='SwapInitiation'>
-      <BrandCard className='SwapInitiation_card' title='liquality CROSSCHAIN SWAP'>
+      <BrandCard className='SwapInitiation_card' title='YASWAP - CROSSCHAIN SWAP DAPP'>
         {circle}
         <div className='SwapInitiation_top'>
           <CurrencyInputs

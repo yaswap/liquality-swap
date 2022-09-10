@@ -1,8 +1,8 @@
-# Contributing to Liquality
+# Contributing to Yaswap
 
-Thank you for your intrest in contributing. This protocol is maintained by the community with support from [Liquality](https://liquality.io) and ConsenSys.
+Thank you for your intrest in contributing. This protocol is maintained by the community with support from [Yaswap](https://yacoin.org).
 
-The following is a set of guidelines and supporting for improving Liquality and also building Dapps which use the protocol.  Please use your best judgement and submit pull requests to improve this document.
+The following is a set of guidelines and supporting for improving Yaswap and also building Dapps which use the protocol.  Please use your best judgement and submit pull requests to improve this document.
 
 ## Table Of Contents
 
@@ -13,7 +13,7 @@ The following is a set of guidelines and supporting for improving Liquality and 
 ---
 
 ## Code of Conduct
-This project, those participating in it, contributors, and Dapp creators who use it are governed by the  [Liquality Code of Conduct](./CODE_OF_CONDUCT.md). By participating you agree to uphold it.
+This project, those participating in it, contributors, and Dapp creators who use it are governed by the  [Yaswap Code of Conduct](./CODE_OF_CONDUCT.md). By participating you agree to uphold it.
 
 
 ## Issue and Pull Request Labels

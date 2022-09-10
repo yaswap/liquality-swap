@@ -5,12 +5,12 @@ import liqualityIcon from '../icons/wallets/liquality/icon.svg'
 import nodeIcon from '../icons/wallets/node/icon.svg'
 
 const wallets = {
-  'liquality': {
+  'yaswap': {
     icon: liqualityIcon,
-    name: 'Liquality Wallet',
+    name: 'Yaswap Wallet',
     connection: {
-      title: 'On Liquality Wallet',
-      description: 'Look for the Liquality extension in your browser.'
+      title: 'On Yaswap Wallet',
+      description: 'Look for the Yaswap extension in your browser.'
     },
     troubleshootConnectionLink: 'https://liquality.io/blog/the-liquality-multi-chain-swap-wallet-cross-chain-atomic-swaps-have-never-been-so-easy/'
   },
@@ -81,7 +81,7 @@ function getAvailableEthereumWallets (asset) {
 }
 
 function getAvailableBitcoinWallets () {
-  const wallets = ['liquality', 'bitcoin_ledger_legacy', 'bitcoin_ledger_native_segwit']
+  const wallets = ['yaswap', 'bitcoin_ledger_legacy', 'bitcoin_ledger_native_segwit']
   if (config.assets.BTC.rpc && config.assets.BTC.rpc.wallet) {
     wallets.push('bitcoin_node')
   }
@@ -89,7 +89,7 @@ function getAvailableBitcoinWallets () {
 }
 
 function getAvailableYacoinWallets () {
-  const wallets = ['liquality']
+  const wallets = ['yaswap']
   return wallets
 }
 

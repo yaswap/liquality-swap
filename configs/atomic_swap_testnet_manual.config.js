@@ -55,10 +55,10 @@ export default {
   },
 
   defaultFee: "average",
-  hostName: "Liquality",
+  hostName: "Yaswap",
   hostIcon:
-    "https://raw.githubusercontent.com/liquality/chainabstractionlayer/master/liquality-logo.png",
-  //agents: ['https://liquality.io/swap-testnet/agent'],
+    "https://raw.githubusercontent.com/yaswap/chainabstractionlayer/master/yaswap-logo.png",
+  //agents: ['https://yacoin.org/swap-testnet/agent'],
   injectScript: `
   function loadScript(src, callback) {
     var s,
@@ -185,19 +185,19 @@ export default {
   }
   `,
   injectFooter: `<p style="text-align: center; margin-bottom: 8px">
-  <a href="https://liquality.io/support" target="_blank">FAQ</a>
+  <a href="https://yacoin.org/support" target="_blank">FAQ</a>
   &nbsp;|&nbsp;
   <a href="https://youtu.be/G8zcvEy2Ccw" target="_blank">Youtube Tutorial</a>
   &nbsp;|&nbsp;
-  <a href="https://liquality.io/disclaimer/" target="_blank">Disclaimer</a>
+  <a href="https://yacoin.org/disclaimer/" target="_blank">Disclaimer</a>
   &nbsp;|&nbsp;
-  <a href="https://liquality.io/terms-of-use/standalone.html" target="_blank">Terms of Use</a>
+  <a href="https://yacoin.org/terms-of-use/standalone.html" target="_blank">Terms of Use</a>
   &nbsp;|&nbsp;
-  <a href="https://liquality.io/privacy-policy" target="_blank">Privacy Policy</a>
+  <a href="https://yacoin.org/privacy-policy" target="_blank">Privacy Policy</a>
   &nbsp;|&nbsp;
   <a href="https://github.com/ConsenSys/liquality-audit-report-2018-11" target="_blank">Contract Audit</a>
   &nbsp;|&nbsp;
-  <a href="https://liquality.io" target="_blank">Liquality.io</a>
+  <a href="https://yacoin.org" target="_blank">yacoin.org</a>
   </p>
   <p style="text-align: center;font-size: 80%; color: #aaa">${footerVersion}</p>
   <style>
@@ -237,9 +237,9 @@ export default {
       • MetaMask (ETH, ERC20) <br/>
       <br/>
       You are using an implementation that is on beta and was created to demonstrate the features of cross-chain atomic swaps.. The interface is secure and fully functional, and all contracts have been audited.<br/>
-      To add tokens and extend features, please find developer tools on <a href="https://liquality.io">liquality.io</a>.<br/><br/>
+      To add tokens and extend features, please find developer tools on <a href="https://yacoin.org">yacoin.org</a>.<br/><br/>
       </div>
-      <iframe style="width: 100%;" src="https://liquality.io/terms-of-use/standalone.html"></iframe>
+      <iframe style="width: 100%;" src="https://yacoin.org/terms-of-use/standalone.html"></iframe>
       <p><input type="checkbox" id="analytics-checkbox"/> Enable analytics to help us better understand issues and improve the experience.</p>
       <div style="text-align: center;">
         <button

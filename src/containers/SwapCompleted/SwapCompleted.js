@@ -137,14 +137,14 @@ class SwapCompleted extends Component {
           <div className='SwapCompleted_shareLeft'>
             <h3 className='p-4 mt-1'>SHARE</h3>
             <img className='mr-3' src={Facebook} alt='facebook logo' />
-            <img className='mr-3' src={Twitter} alt='twitter logo' onClick={() => window.open('https://twitter.com/Liquality_io')} />
-            <img className='mr-3' src={Telegram} alt='telegram logo' onClick={() => window.open('https://t.me/liquality')} />
+            <img className='mr-3' src={Twitter} alt='twitter logo' onClick={() => window.open('https://twitter.com/YACoinProject')} />
+            <img className='mr-3' src={Telegram} alt='telegram logo' onClick={() => window.open('https://t.me/yaswap')} />
           </div>
           <div className='SwapCompleted_shareRight'>
             <h3 className='p-4 mt-1'>FIND US</h3>
-            <img className='mr-3' src={Medium} alt='telegram logo' onClick={() => window.open('https://medium.com/liquality')} />
-            <img className='mr-3' src={Web} alt='liquality logo' onClick={() => window.open('https://liquality.io/')} />
-            <img className='mr-3' src={Github} alt='github logo' onClick={() => window.open('https://github.com/liquality')} />
+            <img className='mr-3' src={Medium} alt='telegram logo' onClick={() => window.open('https://medium.com/yaswap')} />
+            <img className='mr-3' src={Web} alt='Yacoin logo' onClick={() => window.open('https://yacoin.org/')} />
+            <img className='mr-3' src={Github} alt='github logo' onClick={() => window.open('https://github.com/yaswap')} />
           </div>
         </div>
       </BrandCard>

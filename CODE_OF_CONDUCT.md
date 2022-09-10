@@ -1,6 +1,6 @@
-# Liquality Contributor Code of Conduct
+# Yaswap Contributor Code of Conduct
 
-## Liquality Core Team Promise
+## Yaswap Core Team Promise
 
 We promise all features, additions, and changes we make protocol to empower users to be in complete absolute control over their own actions and exchanges. We commit to having an open, responsive, professional, thoughtful, and friendly community that challenges the status quo and provides builders with all the tools they need to build powerful applications.
 
@@ -19,6 +19,6 @@ Project maintainers have the right and responsibility to remove, edit, or reject
 
 ## Scope & Enforcement
 
-This Code of Conduct applies to this repository, all issues and pull requests, the types of features in this project, and all spaces that discussion of the project takes place. It does not apply to the Dapps and other applications which are built on top of this project or their individual communities. Liquality may be used by any organization or individual for any purpose they see fit.
+This Code of Conduct applies to this repository, all issues and pull requests, the types of features in this project, and all spaces that discussion of the project takes place. It does not apply to the Dapps and other applications which are built on top of this project or their individual communities. Yaswap may be used by any organization or individual for any purpose they see fit.
 
-Respect within our community will be enforced by the Liquality team or vigilantes we give bounties to.
+Respect within our community will be enforced by the Yaswap team or vigilantes we give bounties to.

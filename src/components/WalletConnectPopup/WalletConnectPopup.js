@@ -63,7 +63,7 @@ class WalletConnectPopup extends Component {
     } else {
       walletConnectBody = (
         <WalletChoose
-          title='Liquality'
+          title='Yaswap'
           subTitle=''
           wallets={getAssetWallets(this.props.currency)}
           receive={props.id === 'b'}

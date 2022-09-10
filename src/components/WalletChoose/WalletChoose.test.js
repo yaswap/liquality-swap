@@ -11,7 +11,7 @@ function mockFn () {
 it('renders without crashing', () => {
   const div = document.createElement('div')
   const props = {
-    title: 'Liquality',
+    title: 'Yaswap',
     subTitle: 'Subtitle',
     wallets: ['metamask'],
     chooseWallet: mockFn,

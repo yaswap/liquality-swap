@@ -1,5 +1,5 @@
 {
-  "name": "liquality-atomic-swap",
+  "name": "yaswap",
   "version": "0.8.0",
   "private": true,
   "dependencies": {
@@ -74,8 +74,8 @@
     "build-js-deuglify": "npm-run-all deuglify-bitcoinjslib build-js",
     "build": "npm-run-all build-css build-js-deuglify",
     "env:netlify": "export REACT_APP_COMMIT_REF=\"$COMMIT_REF\"",
-    "config:testnet": "cp configs/liquality.io.testnet.config.js src/config/config.js",
-    "config:mainnet": "cp configs/liquality.io.mainnet.config.js src/config/config.js",
+    "config:testnet": "cp configs/atomic_swap_testnet_manual.config.js src/config/config.js",
+    "config:mainnet": "cp configs/atomic_swap_mainnet_manual.config.js src/config/config.js",
     "build:testnet": "npm-run-all env:netlify config:testnet build-css build-js-deuglify",
     "build:mainnet": "npm-run-all env:netlify config:mainnet build-css build-js-deuglify",
     "test": "react-scripts test --env=jsdom --testPathIgnorePatterns=test/integration",
