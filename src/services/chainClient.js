@@ -74,7 +74,7 @@ function createBtcClient (asset, wallet) {
     if (btcConfig.api) btcClient.addProvider(new BitcoinEsploraBatchApiProvider({ url: btcConfig.api.url, network: network, numberOfBlockConfirmation: btcConfig.feeNumberOfBlocks }))
     btcClient.addProvider(new BitcoinRpcProvider({ uri: btcConfig.rpc.url, username: btcConfig.rpc.username, password: btcConfig.rpc.password, feeBlockConfirmations: btcConfig.feeNumberOfBlocks }))
     btcClient.addProvider(new BitcoinNodeWalletProvider({ network, uri: btcConfig.rpc.url, username: btcConfig.rpc.username, password: btcConfig.rpc.password, addressType: btcConfig.rpc.addressType }))
-  } else if (wallet === 'liquality') {
+  } else if (wallet === 'yaswap') {
     btcClient.addProvider(getBitcoinDataProvider(btcConfig))
     btcClient.addProvider(new BitcoinWalletApiProvider({ network, addressType: 'bech32' }))
   } else {
@@ -95,7 +95,7 @@ function createYacClient(asset, wallet) {
   const network = YacoinNetworks[yacConfig.network];
 
   const yacClient = new Client();
-  if (wallet === "liquality") {
+  if (wallet === "yaswap") {
     yacClient.addProvider(
       new YacoinEsploraApiProvider({
         url: yacConfig.api.esploraUrl,
