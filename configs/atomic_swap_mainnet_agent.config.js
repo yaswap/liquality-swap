@@ -14,7 +14,7 @@ export default {
       },
       api: {
         type: "scraper",
-        url: "http://104.48.189.74:8081/",
+        url: "http://68.117.213.163/ethscraper_mainnet/",
       },
       network: "ethereum_mainnet",
       explorerPath: "https://etherscan.io/tx/0x",
@@ -32,12 +32,12 @@ export default {
     },
     YAC: {
       api: {
-        esploraUrl: "http://104.48.189.74:3001/api",
-        esploraSwapUrl: "http://104.48.189.74:3001",
+        esploraUrl: "http://68.117.213.163/api",
+        esploraSwapUrl: "http://68.117.213.163",
       },
       feeNumberOfBlocks: 1,
       network: "yacoin",
-      explorerPath: "http://104.48.189.74:3001/tx/",
+      explorerPath: "http://68.117.213.163/tx/",
     },
     DAI: {
       type: "erc20",
@@ -46,7 +46,7 @@ export default {
       },
       api: {
         type: "scraper",
-        url: "http://104.48.189.74:8081/",
+        url: "http://68.117.213.163/ethscraper_mainnet/",
       },
       contractAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
       network: "ethereum_mainnet",
@@ -59,7 +59,7 @@ export default {
       },
       api: {
         type: "scraper",
-        url: "http://104.48.189.74:8081/",
+        url: "http://68.117.213.163/ethscraper_mainnet/",
       },
       contractAddress: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
       network: "ethereum_mainnet",
@@ -72,7 +72,7 @@ export default {
       },
       api: {
         type: "scraper",
-        url: "http://104.48.189.74:8081/",
+        url: "http://68.117.213.163/ethscraper_mainnet/",
       },
       contractAddress: "0xdac17f958d2ee523a2206206994597c13d831ec7",
       network: "ethereum_mainnet",
@@ -85,7 +85,7 @@ export default {
       },
       api: {
         type: "scraper",
-        url: "http://104.48.189.74:8081/",
+        url: "http://68.117.213.163/ethscraper_mainnet/",
       },
       contractAddress: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
       network: "ethereum_mainnet",
@@ -98,7 +98,7 @@ export default {
       },
       api: {
         type: "scraper",
-        url: "http://104.48.189.74:8081/",
+        url: "http://68.117.213.163/ethscraper_mainnet/",
       },
       contractAddress: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
       network: "ethereum_mainnet",
@@ -109,7 +109,7 @@ export default {
   hostName: "Yaswap",
   hostIcon:
     "https://raw.githubusercontent.com/yaswap/chainabstractionlayer/master/yaswap-logo.png",
-  agents: ['http://104.48.189.74:3031'],
+  agents: ['http://68.117.213.163/atomicagent_mainnet'],
   injectScript: `
   function loadScript(src, callback) {
     var s,
