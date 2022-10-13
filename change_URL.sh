@@ -7,7 +7,7 @@ help () {
    echo
 }
 
-old_IP="68.117.213.163"
+old_IP="yaswap.yacoin.org"
 echo "Change machine IP from $old_IP to $1"
 # Get the options
 git ls-files -z | xargs -0 sed -i -e "s/$old_IP/$1/g"

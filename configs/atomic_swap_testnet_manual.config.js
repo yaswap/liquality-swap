@@ -14,7 +14,7 @@ export default {
       },
       api: {
         type: "scraper",
-        url: "http://68.117.213.163/ethscraper_testnet/",
+        url: "https://yaswap.yacoin.org/ethscraper_testnet/",
       },
       network: "ropsten",
       explorerPath: "https://ropsten.etherscan.io/tx/0x",
@@ -32,12 +32,12 @@ export default {
     },
     YAC: {
       api: {
-        esploraUrl: "http://68.117.213.163/api",
-        esploraSwapUrl: "http://68.117.213.163",
+        esploraUrl: "https://yaswap.yacoin.org/api",
+        esploraSwapUrl: "https://yaswap.yacoin.org",
       },
       feeNumberOfBlocks: 1,
       network: "yacoin_testnet",
-      explorerPath: "http://68.117.213.163/tx/",
+      explorerPath: "https://yaswap.yacoin.org/tx/",
     },
     FAU: {
       type: "erc20",
@@ -46,7 +46,7 @@ export default {
       },
       api: {
         type: "scraper",
-        url: "http://68.117.213.163/ethscraper_testnet/",
+        url: "https://yaswap.yacoin.org/ethscraper_testnet/",
       },
       contractAddress: "0xFab46E002BbF0b4509813474841E0716E6730136",
       network: "ropsten",
