@@ -8,17 +8,6 @@ const footerVersion = `${process.env.REACT_APP_COMMIT_REF ||
 
 export default {
   assets: {
-    ETH: {
-      rpc: {
-        url: "https://ropsten.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
-      },
-      api: {
-        type: "scraper",
-        url: "https://yaswap.yacoin.org/ethscraper_testnet/",
-      },
-      network: "ropsten",
-      explorerPath: "https://ropsten.etherscan.io/tx/0x",
-    },
     BTC: {
       api: {
         url: "https://electrs-testnet-api.liq-chainhub.net",
@@ -38,6 +27,17 @@ export default {
       feeNumberOfBlocks: 1,
       network: "yacoin_testnet",
       explorerPath: "https://yaswap.yacoin.org/tx/",
+    },
+    ETH: {
+      rpc: {
+        url: "https://ropsten.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
+      },
+      api: {
+        type: "scraper",
+        url: "https://yaswap.yacoin.org/ethscraper_testnet/",
+      },
+      network: "ropsten",
+      explorerPath: "https://ropsten.etherscan.io/tx/0x",
     },
     FAU: {
       type: "erc20",
