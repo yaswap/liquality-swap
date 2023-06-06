@@ -30,27 +30,27 @@ export default {
     },
     ETH: {
       rpc: {
-        url: "https://ropsten.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
+        url: "https://goerli.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
       },
       api: {
         type: "scraper",
         url: "https://yaswap.yacoin.org/ethscraper_testnet/",
       },
-      network: "ropsten",
-      explorerPath: "https://ropsten.etherscan.io/tx/0x",
+      network: "goerli",
+      explorerPath: "https://goerli.etherscan.io/tx/0x",
     },
     FAU: {
       type: "erc20",
       rpc: {
-        url: "https://ropsten.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
+        url: "https://goerli.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
       },
       api: {
         type: "scraper",
         url: "https://yaswap.yacoin.org/ethscraper_testnet/",
       },
       contractAddress: "0xFab46E002BbF0b4509813474841E0716E6730136",
-      network: "ropsten",
-      explorerPath: "https://ropsten.etherscan.io/tx/0x",
+      network: "goerli",
+      explorerPath: "https://goerli.etherscan.io/tx/0x",
     },
   },
 
