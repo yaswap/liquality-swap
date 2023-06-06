@@ -39,7 +39,7 @@ export default {
       network: "goerli",
       explorerPath: "https://goerli.etherscan.io/tx/0x",
     },
-    FAU: {
+    DAI: {
       type: "erc20",
       rpc: {
         url: "https://goerli.infura.io/v3/37efa691ffec4c41a60aa4a69865d8f6",
@@ -48,7 +48,7 @@ export default {
         type: "scraper",
         url: "https://yaswap.yacoin.org/ethscraper_testnet/",
       },
-      contractAddress: "0xFab46E002BbF0b4509813474841E0716E6730136",
+      contractAddress: "0x11fE4B6AE13d2a6055C8D9cF65c55bac32B5d844",
       network: "goerli",
       explorerPath: "https://goerli.etherscan.io/tx/0x",
     },
