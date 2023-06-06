@@ -85,7 +85,7 @@ function createBtcClient (asset, wallet) {
   if (btcConfig.api) btcClient.addProvider(new BitcoinEsploraSwapFindProvider(btcConfig.api.url))
 
   if (network.isTestnet) btcClient.addProvider(new BitcoinRpcFeeProvider())
-  else btcClient.addProvider(new BitcoinFeeApiProvider('https://liquality.io/swap/mempool/v1/fees/recommended'))
+  else btcClient.addProvider(new BitcoinFeeApiProvider('https://mempool.space/api/v1/fees/recommended'))
 
   return btcClient
 }
@@ -127,7 +127,7 @@ function createYacClient(asset, wallet) {
 
   yacClient.addProvider(
     new YacoinFeeApiProvider(
-      "https://liquality.io/swap/mempool/v1/fees/recommended"
+      "https://mempool.space/api/v1/fees/recommended"
     )
   );
 
