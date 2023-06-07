@@ -1,6 +1,6 @@
 /* global localStorage */
 
-import { Client } from '@liquality/client'
+import { Client } from '@yaswap/client'
 import { BitcoinEsploraBatchApiProvider } from '@yaswap/bitcoin-esplora-batch-api-provider'
 import { BitcoinEsploraSwapFindProvider } from '@yaswap/bitcoin-esplora-swap-find-provider'
 import { BitcoinRpcProvider } from '@yaswap/bitcoin-rpc-provider'

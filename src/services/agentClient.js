@@ -2,7 +2,7 @@ import moment from 'moment'
 import axios from 'axios'
 import pkg from '../../package.json'
 
-const VERSION_STRING = `SwapUI ${pkg.version} (CAL ${pkg.dependencies['@liquality/client'].replace('^', '').replace('~', '')})`
+const VERSION_STRING = `SwapUI ${pkg.version} (CAL ${pkg.dependencies['@yaswap/client'].replace('^', '').replace('~', '')})`
 
 class Agent {
   constructor (url) {

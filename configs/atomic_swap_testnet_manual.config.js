@@ -1,6 +1,6 @@
 import pkg from "../../package.json";
 
-const CAL_VERSION = pkg.dependencies["@liquality/client"]
+const CAL_VERSION = pkg.dependencies["@yaswap/client"]
   .replace("^", "")
   .replace("~", "");
 const footerVersion = `${process.env.REACT_APP_COMMIT_REF ||
